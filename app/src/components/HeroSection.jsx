@@ -1,10 +1,8 @@
-import { useState } from 'react'
 import { AnimatedCard } from './AnimatedCard'
 import { AnimatedNumberBadge } from './AnimatedNumberBadge'
 import { LeadForm } from './LeadForm'
 
 export function HeroSection() {
-  const [coletaAberta, setColetaAberta] = useState(false)
   return (
     <section className="relative w-full overflow-hidden bg-background">
       <div className="hidden lg:block relative w-full min-h-screen">
@@ -59,25 +57,13 @@ export function HeroSection() {
                 </p>
               </div>
               <div className="flex flex-col gap-4 items-start w-full max-w-md">
-                <button
-                  type="button"
-                  onClick={() => setColetaAberta((v) => !v)}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-background bg-gold hover:bg-gold-light transition-all duration-200 rounded-full shadow-lg shadow-black/20 hover:shadow-gold/30 uppercase tracking-wider w-full sm:w-auto"
-                >
-                  Participar gratuitamente
-                </button>
-                {coletaAberta && (
-                  <div className="w-full pt-2">
-                    <LeadForm
-                      idPrefix="hero-desktop"
-                      onSubmit={(data) => {
-                        console.log(data)
-                        setColetaAberta(false)
-                      }}
-                      submitLabel="Quero participar gratuitamente"
-                    />
-                  </div>
-                )}
+                <div className="w-full">
+                  <LeadForm
+                    idPrefix="hero-desktop"
+                    onSubmit={(data) => console.log(data)}
+                    submitLabel="Quero participar gratuitamente"
+                  />
+                </div>
                 <p className="text-muted text-[11px] md:text-xs uppercase tracking-wider">
                   Esquadria Milionária — Vagas limitadas
                 </p>
@@ -121,25 +107,13 @@ export function HeroSection() {
                 <p>Esse é o <span className="text-white font-semibold">vidraceiro travado</span>.</p>
               </div>
               <div className="flex flex-col gap-4 items-center w-full">
-                <button
-                  type="button"
-                  onClick={() => setColetaAberta((v) => !v)}
-                  className="inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-background bg-gold hover:bg-gold-light transition-all duration-200 rounded-full shadow-lg shadow-black/20 hover:shadow-gold/30 uppercase tracking-wider w-full sm:w-auto"
-                >
-                  Participar gratuitamente
-                </button>
-                {coletaAberta && (
-                  <div className="w-full pt-2 max-w-sm">
-                    <LeadForm
-                      idPrefix="hero-mobile"
-                      onSubmit={(data) => {
-                        console.log(data)
-                        setColetaAberta(false)
-                      }}
-                      submitLabel="Quero participar gratuitamente"
-                    />
-                  </div>
-                )}
+                <div className="w-full max-w-sm">
+                  <LeadForm
+                    idPrefix="hero-mobile"
+                    onSubmit={(data) => console.log(data)}
+                    submitLabel="Quero participar gratuitamente"
+                  />
+                </div>
                 <p className="text-muted text-[11px] md:text-xs uppercase tracking-wider">
                   Esquadria Milionária — Vagas limitadas
                 </p>

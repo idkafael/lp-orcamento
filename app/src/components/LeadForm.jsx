@@ -10,7 +10,6 @@ function formatTelefone(value) {
 }
 
 export function LeadForm({ onSubmit, submitLabel = 'Quero participar do Evento Esquadria Milionária', idPrefix = '' }) {
-  const [nomeCompleto, setNomeCompleto] = useState('')
   const [telefone, setTelefone] = useState('')
   const [email, setEmail] = useState('')
 
@@ -20,7 +19,7 @@ export function LeadForm({ onSubmit, submitLabel = 'Quero participar do Evento E
 
   function handleSubmit(e) {
     e.preventDefault()
-    onSubmit?.({ nomeCompleto, telefone, email })
+    onSubmit?.({ email, telefone })
   }
 
   const n = (id) => idPrefix ? `${idPrefix}-${id}` : id
@@ -28,37 +27,26 @@ export function LeadForm({ onSubmit, submitLabel = 'Quero participar do Evento E
   return (
     <form onSubmit={handleSubmit} className="space-y-5">
       <div>
-        <label htmlFor={n('nome')} className="block text-white text-sm font-medium mb-2">
-          Nome completo
-        </label>
-        <input
-          id={n('nome')}
-          type="text"
-          value={nomeCompleto}
-          onChange={(e) => setNomeCompleto(e.target.value)}
-          required
-          placeholder="Seu nome completo"
-          className="w-full px-4 py-3 rounded-lg bg-background border border-surface-light text-white placeholder:text-muted focus:outline-none focus:border-gold/50 transition-colors"
-        />
-      </div>
-      <div>
-        <label htmlFor={n('email')} className="block text-white text-sm font-medium mb-2">
-          E-mail
-        </label>
         <input
           id={n('email')}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          placeholder="seu@email.com"
+          placeholder="Digite seu melhor e-mail:"
           className="w-full px-4 py-3 rounded-lg bg-background border border-surface-light text-white placeholder:text-muted focus:outline-none focus:border-gold/50 transition-colors"
         />
       </div>
-      <div>
-        <label htmlFor={n('telefone')} className="block text-white text-sm font-medium mb-2">
-          Número de contato
-        </label>
+      <div className="flex rounded-lg bg-background border border-surface-light overflow-hidden focus-within:border-gold/50 transition-colors">
+        <div className="flex items-center gap-1.5 pl-4 pr-2 text-muted shrink-0">
+          <span className="text-lg" aria-hidden>🇧🇷</span>
+          <span className="text-sm font-medium">+55</span>
+          <span className="text-muted/80" aria-hidden>
+            <svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </span>
+        </div>
         <input
           id={n('telefone')}
           type="tel"
@@ -67,8 +55,8 @@ export function LeadForm({ onSubmit, submitLabel = 'Quero participar do Evento E
           required
           pattern={TELEFONE_PATTERN}
           title="Use o formato (00) 00000-0000 ou (00) 0000-0000"
-          placeholder="(00) 00000-0000"
-          className="w-full px-4 py-3 rounded-lg bg-background border border-surface-light text-white placeholder:text-muted focus:outline-none focus:border-gold/50 transition-colors"
+          placeholder="WhatsApp com DDD - Ex: (11) 98765-1234"
+          className="flex-1 min-w-0 px-3 py-3 bg-transparent text-white placeholder:text-muted focus:outline-none"
         />
       </div>
       <button
