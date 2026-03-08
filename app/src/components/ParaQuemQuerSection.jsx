@@ -28,10 +28,10 @@ export function ParaQuemQuerSection() {
             E principalmente…
           </p>
           <p className="text-muted text-base md:text-lg leading-relaxed font-medium">
-            deixar de ser um vidraceiro travado
+            deixar de ser um profissional travado no dia a dia
             <br />
             para se tornar um{' '}
-            <span className="gradient-text-gold font-bold">Vidraceiro High Ticket</span>.
+            <span className="gradient-text-gold font-bold">Vidraceiro ou Serralheiro High Ticket</span>.
           </p>
         </div>
       </div>

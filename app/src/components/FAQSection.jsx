@@ -21,10 +21,6 @@ const faqs = [
     q: 'Eu já tenho uma empresa, mas estou estagnado. Essa mentoria serve para mim?',
     a: 'Sim! A mentoria foi desenvolvida especialmente para ajudar empresários do setor — donos de esquadrias, serralheiros e vidraceiros — que estão estagnados a quebrar barreiras e dar o próximo passo no crescimento.',
   },
-  {
-    q: 'Tem garantia?',
-    a: 'Sim, oferecemos garantia de satisfação. Entre em contato para mais detalhes.',
-  },
 ]
 
 function FAQItem({ pergunta, resposta, isOpen, onClick }) {
