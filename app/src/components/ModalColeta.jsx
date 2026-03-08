@@ -10,9 +10,9 @@ export function ModalColeta({ isOpen, onClose, onSubmit }) {
 
   if (!isOpen) return null
 
-  function handleSubmit(data) {
-    onSubmit?.(data)
-    onClose?.()
+  async function handleSubmit(data) {
+    const result = await Promise.resolve(onSubmit?.(data))
+    if (result?.ok) onClose?.()
   }
 
   return (
@@ -46,7 +46,7 @@ export function ModalColeta({ isOpen, onClose, onSubmit }) {
           <LeadForm
             idPrefix="modal"
             onSubmit={handleSubmit}
-            submitLabel="Quero participar gratuitamente"
+            submitLabel="Participar gratuitamente"
           />
         </AnimatedCard>
       </div>

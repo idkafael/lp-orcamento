@@ -1,12 +1,7 @@
 import { AnimatedCard } from './AnimatedCard'
 import { LeadForm } from './LeadForm'
 
-export function OfertaSection() {
-  function handleSubmit(data) {
-    // TODO: enviar para API ou integração
-    console.log(data)
-  }
-
+export function OfertaSection({ onSubmit }) {
   return (
     <section id="oferta" className="relative py-20 md:py-28 bg-background overflow-hidden px-4">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[2px] bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
@@ -24,7 +19,7 @@ export function OfertaSection() {
         </p>
 
         <AnimatedCard className="p-6 md:p-8" innerBg="bg-surface">
-          <LeadForm onSubmit={handleSubmit} />
+          <LeadForm onSubmit={onSubmit} />
         </AnimatedCard>
       </div>
     </section>

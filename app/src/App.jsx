@@ -10,16 +10,21 @@ import {
   CTASection,
   Footer,
 } from './components'
+import { submitLead } from './services/leads'
 
 function App() {
+  async function handleLeadSubmit(data) {
+    return submitLead(data)
+  }
+
   return (
     <main className="min-h-screen bg-background overflow-hidden">
-      <HeroSection />
+      <HeroSection onSubmit={handleLeadSubmit} />
       <VideoSection />
       <ParaQuemSection />
       <ParaQuemQuerSection />
       <AvisoSection />
-      <OfertaSection />
+      <OfertaSection onSubmit={handleLeadSubmit} />
       <SergioLimaSection />
       <FAQSection />
       <CTASection />

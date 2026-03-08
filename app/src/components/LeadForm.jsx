@@ -12,14 +12,31 @@ function formatTelefone(value) {
 export function LeadForm({ onSubmit, submitLabel = 'Quero participar do Evento Esquadria Milionária', idPrefix = '' }) {
   const [telefone, setTelefone] = useState('')
   const [email, setEmail] = useState('')
+  const [status, setStatus] = useState('idle') // 'idle' | 'loading' | 'success' | 'error'
+  const [errorMessage, setErrorMessage] = useState('')
 
   function handleTelefoneChange(e) {
     setTelefone(formatTelefone(e.target.value))
   }
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault()
-    onSubmit?.({ email, telefone })
+    setStatus('loading')
+    setErrorMessage('')
+    try {
+      const result = await Promise.resolve(onSubmit?.({ email, telefone }))
+      if (result?.ok) {
+        setStatus('success')
+        setEmail('')
+        setTelefone('')
+      } else {
+        setStatus('error')
+        setErrorMessage(result?.error || 'Erro ao enviar. Tente novamente.')
+      }
+    } catch (err) {
+      setStatus('error')
+      setErrorMessage(err?.message || 'Erro ao enviar. Tente novamente.')
+    }
   }
 
   const n = (id) => idPrefix ? `${idPrefix}-${id}` : id
@@ -59,11 +76,22 @@ export function LeadForm({ onSubmit, submitLabel = 'Quero participar do Evento E
           className="flex-1 min-w-0 px-3 py-3 text-sm bg-transparent text-white placeholder:text-muted focus:outline-none"
         />
       </div>
+      {status === 'success' && (
+        <p className="text-sm text-green-400" role="alert">
+          Enviado com sucesso! Em breve entraremos em contato.
+        </p>
+      )}
+      {status === 'error' && (
+        <p className="text-sm text-red-400" role="alert">
+          {errorMessage}
+        </p>
+      )}
       <button
         type="submit"
-        className="w-full inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-background bg-gold hover:bg-gold-light transition-all duration-200 rounded-full shadow-lg shadow-black/20 hover:shadow-gold/30 uppercase tracking-wider"
+        disabled={status === 'loading'}
+        className="w-full inline-flex items-center justify-center px-8 py-3.5 text-sm font-semibold text-background bg-gold hover:bg-gold-light transition-all duration-200 rounded-full shadow-lg shadow-black/20 hover:shadow-gold/30 uppercase tracking-wider disabled:opacity-70 disabled:cursor-not-allowed"
       >
-        {submitLabel}
+        {status === 'loading' ? 'Enviando...' : submitLabel}
       </button>
     </form>
   )

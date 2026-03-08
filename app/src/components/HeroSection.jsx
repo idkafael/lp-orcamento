@@ -2,7 +2,7 @@ import { AnimatedCard } from './AnimatedCard'
 import { AnimatedNumberBadge } from './AnimatedNumberBadge'
 import { LeadForm } from './LeadForm'
 
-export function HeroSection() {
+export function HeroSection({ onSubmit }) {
   return (
     <section className="relative w-full overflow-hidden bg-background">
       <div className="hidden lg:block relative w-full min-h-screen">
@@ -60,7 +60,7 @@ export function HeroSection() {
                 <div className="w-full">
                   <LeadForm
                     idPrefix="hero-desktop"
-                    onSubmit={(data) => console.log(data)}
+                    onSubmit={onSubmit}
                     submitLabel="Participar gratuitamente"
                   />
                 </div>
@@ -104,7 +104,7 @@ export function HeroSection() {
                 <div className="w-full max-w-sm">
                   <LeadForm
                     idPrefix="hero-mobile"
-                    onSubmit={(data) => console.log(data)}
+                    onSubmit={onSubmit}
                     submitLabel="Participar gratuitamente"
                   />
                 </div>
