@@ -108,6 +108,9 @@ export function HeroSection({ onSubmit }) {
                     submitLabel="Participar gratuitamente"
                   />
                 </div>
+                <p className="text-muted text-xs sm:text-sm mt-2 font-medium">
+                  Quarta-feira, dia 11 de março às 20h
+                </p>
               </div>
             </div>
           </AnimatedCard>

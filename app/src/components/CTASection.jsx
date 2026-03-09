@@ -20,6 +20,9 @@ export function CTASection() {
         >
           QUERO ENTRAR NO ESQUADRIA MILIONÁRIA
         </a>
+        <p className="text-muted text-xs sm:text-sm mt-4 font-medium">
+          Quarta-feira, dia 11 de março às 20h
+        </p>
       </div>
     </section>
   )

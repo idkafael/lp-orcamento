@@ -20,6 +20,9 @@ export function OfertaSection({ onSubmit }) {
 
         <AnimatedCard className="p-6 md:p-8" innerBg="bg-surface">
           <LeadForm onSubmit={onSubmit} />
+          <p className="text-muted text-xs sm:text-sm text-center mt-4 font-medium">
+            Quarta-feira, dia 11 de março às 20h
+          </p>
         </AnimatedCard>
       </div>
     </section>
