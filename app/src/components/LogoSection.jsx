@@ -1,15 +1,6 @@
 export function LogoSection() {
   return (
-    <section className="w-full bg-background py-10 md:py-14 px-4 flex items-center justify-center">
-      <div className="max-w-xs md:max-w-sm mx-auto text-center">
-        <img
-          src="/images/logo.png"
-          alt="Sistemaxi"
-          className="w-full h-auto object-contain mx-auto"
-          loading="lazy"
-        />
-      </div>
-    </section>
+    <section className="w-full bg-background py-6" />
   )
 }
 
